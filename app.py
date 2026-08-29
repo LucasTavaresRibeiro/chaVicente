@@ -8,9 +8,6 @@ st.set_page_config(page_title="Enxoval do Vicente - Dattebayo!", page_icon="🦊
 # CSS para o tema do Naruto (Laranja e Azul)
 st.markdown("""
 <style>
-    .stApp {
-        background-color: #fdf6e3;
-    }
     h1, h2, h3 {
         color: #ff7b00; /* Laranja Naruto */
         font-family: 'Arial Black', sans-serif;
