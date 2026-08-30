@@ -67,45 +67,113 @@ DATA_FILE = "enxoval.csv"
 LOJAS_FILE = "lojas.csv"
 
 # Dados Iniciais - Com Links Revisados e Preço Médio
+# Dados Iniciais - Lista Completa de Enxoval e Links Revisados 100%
 INITIAL_DATA = [
+    # --- HIGIENE ---
     {"Item": "Fralda Pampers Premium Care RN", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 60,00",
      "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+Pampers+Premium+Care+RN", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/pampers-fralda-premium-care-recem-nascido-36-unidades.html", 
-     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/fralda-pampers-premium-care-rn"},
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=pampers+premium+care+rn", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+pampers+premium+care+rn"},
     
-    {"Item": "Lenço Umedecido Huggies RN (Kit 4)", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 45,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Lenco+Umedecido+Huggies+RN", 
-     "Busca 2 (Específica)": "https://www.drogaraia.com.br/huggies-primeiros-100-dias-lenco-umedecido-recem-nascido-48-unidades.html", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Len%C3%A7os-Umedecidos-Rec%C3%A9m-Nascido-Huggies-unidades/dp/B07Z49V4T1"},
+    {"Item": "Fralda Pampers Premium Care P", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 75,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+Pampers+Premium+Care+P", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=pampers+premium+care+p", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+pampers+premium+care+p"},
     
-    {"Item": "Body Manga Curta (Kit 5 - Carter's)", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 130,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+manga+curta+carters", 
+    {"Item": "Lenço Umedecido Huggies (Kit Leve Mais)", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Lenco+Umedecido+Huggies+Recem+Nascido", 
+     "Busca 2 (Específica)": "https://www.drogaraia.com.br/search?w=lenco+umedecido+huggies", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lenco+umedecido+huggies"},
+     
+    {"Item": "Pomada Antiassaduras Bepantol Baby", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bepantol+baby+pomada", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=bepantol+baby", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=bepantol+baby"},
+     
+    {"Item": "Sabonete Líquido Granado Bebê", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=sabonete+liquido+granado+bebe", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=sabonete+granado+bebe", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=sabonete+granado+bebe"},
+     
+    {"Item": "Kit Cortador e Lixa de Unha Bebê", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+unha+bebe+tesoura", 
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=kit+unha+bebe", 
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/kit-unha-bebe"},
+
+    # --- ROUPAS ---
+    {"Item": "Body Manga Curta Carter's (Kit)", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 130,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+manga+curta+carters", 
      "Busca 2 (Específica)": "https://www.riachuelo.com.br/busca?q=kit%20body%20carter%27s", 
      "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=kit+body+carters"},
     
-    {"Item": "Macacão Bebê Algodão", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 60,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+algodao+suedine", 
-     "Busca 2 (Específica)": "https://www.renner.com.br/b/infantil/bebes/macacao-e-macaquinho", 
-     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=macacao%20bebe"},
+    {"Item": "Body Manga Longa Básico", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 70,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+manga+longa+bebe", 
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=kit+body+manga+longa", 
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=body%20manga%20longa%20bebe"},
     
-    {"Item": "Absorvente Pós-Parto Plenitud", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 22,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Absorvente+Pos-Parto+Plenitud", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/plenitud-femme-absorvente-pos-parto-8-unidades.html", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Absorvente-P%C3%B3s-Parto-Plenitud-Femme-Unidades/dp/B07Q5W5R5W"},
+    {"Item": "Macacão Suedine (Zíper ou Botão)", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+suedine+ziper", 
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=macacao+bebe", 
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=macacao+bebe"},
+     
+    {"Item": "Kit Mijão/Culote", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mijao+bebe+culote", 
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=mijao+bebe", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=kit+mijao+bebe"},
+     
+    {"Item": "Kit Meias para Recém-Nascido", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+meia+recem+nascido", 
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=meia+bebe", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=meia+bebe"},
+
+    # --- PASSEIO / QUARTO ---
+    {"Item": "Carrinho de Bebê c/ Bebê Conforto", "Categoria": "Passeio", "Comprado": False, "Preço Médio": "R$ 900,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=carrinho+de+bebe+com+bebe+conforto", 
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/carrinho+bebe+conforto/", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=carrinho+de+bebe+travel+system"},
+     
+    {"Item": "Babá Eletrônica com Câmera", "Categoria": "Quarto", "Comprado": False, "Preço Médio": "R$ 300,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=baba+eletronica+com+camera", 
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=baba+eletronica+camera", 
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/baba-eletronica-camera"},
+     
+    {"Item": "Kit Berço (Lençol e Fronha)", "Categoria": "Quarto", "Comprado": False, "Preço Médio": "R$ 150,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+berco+algodao", 
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=kit+berco", 
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/kit-berco"},
+
+    # --- ALIMENTAÇÃO ---
+    {"Item": "Kit Mamadeiras Philips Avent Pétala", "Categoria": "Alimentação", "Comprado": False, "Preço Médio": "R$ 160,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mamadeiras+avent+petala", 
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mamadeira+avent+petala", 
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=mamadeira+avent"},
+     
+    {"Item": "Escova para Lavar Mamadeira", "Categoria": "Alimentação", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=escova+lavar+mamadeira", 
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=escova+mamadeira", 
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=escova+mamadeira"},
+
+    # --- MAMÃE BRUNA ---
+    {"Item": "Absorvente Pós-Parto", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 22,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=absorvente+pos-parto", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=absorvente+pos+parto", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+pos+parto"},
     
-    {"Item": "Bomba Tira Leite Elétrica G-Tech Smart", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 180,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Bomba+Tira+Leite+Eletrica+G-Tech+Smart", 
-     "Busca 2 (Específica)": "https://www.drogaraia.com.br/bomba-tira-leite-materno-eletrica-g-tech-smart.html", 
-     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/bomba-tira-leite-eletrica-g-tech-smart"},
-    
-    {"Item": "Carrinho de Bebê Burigotto", "Categoria": "Passeio", "Comprado": False, "Preço Médio": "R$ 750,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Carrinho+de+Bebe+Burigotto", 
-     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/carrinho+de+bebe+burigotto/", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Carrinho-Beb%C3%AA-Burigotto-Ecce-Preto/dp/B08V5QZXYQ"},
+    {"Item": "Bomba Tira Leite Elétrica", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 180,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bomba+tira+leite+eletrica", 
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=bomba+tira+leite+eletrica", 
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/bomba-tira-leite-eletrica"},
+     
+    {"Item": "Pomada de Lanolina (Fissuras Mamilo)", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=pomada+lanolina+lansinoh", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=lanolina", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lanolina"},
 ]
 
 INITIAL_LOJAS = [
-    {"Loja": "Amazon - Loja do Bebê", "Link": "https://www.amazon.com.br/b?node=16245642011", "Monitorar": True}
+    {"Loja": "Amazon - Categoria Bebês", "Link": "https://www.amazon.com.br/bebes-e-criancas/b?ie=UTF8&node=16245610011", "Monitorar": True},
+    {"Loja": "Drogasil - Infantil", "Link": "https://www.drogasil.com.br/infantil.html", "Monitorar": True},
+    {"Loja": "Riachuelo - Carter's", "Link": "https://www.riachuelo.com.br/infantil/bebes/carters", "Monitorar": True}
 ]
 
 SHEIN_FILE = "shein.csv"
