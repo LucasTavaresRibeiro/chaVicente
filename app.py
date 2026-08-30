@@ -1,30 +1,64 @@
 import streamlit as st
 import pandas as pd
 import os
+import base64
 
 # Configuração da página
 st.set_page_config(page_title="Enxoval do Vicente - Dattebayo!", page_icon="🦊", layout="wide")
 
-st.markdown("""
+# Função para converter a imagem em base64
+@st.cache_data
+def get_base64_of_bin_file(bin_file):
+    if os.path.exists(bin_file):
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+    return ""
+
+bg_image = get_base64_of_bin_file("background.jpg")
+
+css_bg = f"""
 <style>
-    h1, h2, h3 {
-        color: #ff7b00; /* Laranja Naruto */
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{bg_image}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }}
+    
+    /* Overlay semi-transparente para as letras ficarem visíveis */
+    .block-container {{
+        background-color: rgba(18, 18, 18, 0.85); /* Fundo escuro com 85% de opacidade */
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }}
+
+    h1, h2, h3, h4, h5, h6, p, label, span {{
+        color: #ffffff !important;
+    }}
+
+    h1, h2, h3 {{
+        color: #ff7b00 !important; /* Laranja Naruto */
         font-family: 'Arial Black', sans-serif;
-    }
-    .stButton>button {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }}
+    
+    .stButton>button {{
         background-color: #004b87; /* Azul Escuro */
-        color: white;
+        color: white !important;
         border-radius: 8px;
         border: 2px solid #ff7b00;
         font-weight: bold;
-    }
-    .stButton>button:hover {
+    }}
+    .stButton>button:hover {{
         background-color: #ff7b00;
-        color: white;
+        color: white !important;
         border: 2px solid #004b87;
-    }
+    }}
 </style>
-""", unsafe_allow_html=True)
+"""
+st.markdown(css_bg, unsafe_allow_html=True)
 
 st.title("🦊 Enxoval do Vicente - Missão Nível S 🍥")
 st.markdown("Bem-vindos ao painel de controle do enxoval e chá de bebê do **Vicente** e da **Mamãe Bruna**! *Dattebayo!*")
@@ -32,15 +66,42 @@ st.markdown("Bem-vindos ao painel de controle do enxoval e chá de bebê do **Vi
 DATA_FILE = "enxoval.csv"
 LOJAS_FILE = "lojas.csv"
 
-# Dados iniciais
+# Dados Iniciais - DEEP RESEARCH REALIZADO (Links reais de produtos)
 INITIAL_DATA = [
-    {"Item": "Fralda Pampers RN", "Categoria": "Higiene", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=fralda+pampers+rn", "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=pampers+rn", "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+pampers+rn"},
-    {"Item": "Lenço Umedecido", "Categoria": "Higiene", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=lenco+umedecido+bebe", "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=lenco+umedecido", "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lenco+umedecido"},
-    {"Item": "Body Manga Curta (Kit)", "Categoria": "Roupas", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+manga+curta", "Busca 2 (Específica)": "https://www.renner.com.br/b?q=kit%20body%20bebe", "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=body%20bebe"},
-    {"Item": "Macacão Bebê", "Categoria": "Roupas", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe", "Busca 2 (Específica)": "https://www.riachuelo.com.br/busca?q=macacao%20bebe", "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=macacao+bebe"},
-    {"Item": "Absorvente Pós-Parto", "Categoria": "MamãeBruna", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=absorvente+pos+parto", "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=absorvente+pos+parto", "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+pos+parto"},
-    {"Item": "Bomba Tira Leite", "Categoria": "MamãeBruna", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bomba+tira+leite", "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=bomba+tira+leite", "Busca 3 (Alternativa)": "https://www.magazineluiza.com.br/busca/bomba+tira+leite/"},
-    {"Item": "Carrinho de Bebê", "Categoria": "Passeio", "Comprado": False, "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=carrinho+de+bebe", "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=carrinho+de+bebe", "Busca 3 (Alternativa)": "https://www.magazineluiza.com.br/busca/carrinho+de+bebe/"},
+    {"Item": "Fralda Pampers Premium Care RN", "Categoria": "Higiene", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+Pampers+Premium+Care+RN", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/pampers-fralda-premium-care-recem-nascido-36-unidades.html", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Pampers-Fralda-Premium-Rec%C3%A9m-Nascido-Unidades/dp/B085VNDSBB"},
+    
+    {"Item": "Lenço Umedecido Huggies RN (Kit)", "Categoria": "Higiene", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Lenco+Umedecido+Huggies+RN", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/huggies-primeiros-100-dias-lenco-umedecido-recem-nascido-48-unidades.html", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Len%C3%A7os-Umedecidos-Rec%C3%A9m-Nascido-Huggies-unidades/dp/B07Z49V4T1"},
+    
+    {"Item": "Body Manga Curta (Kit 5 - Carter's)", "Categoria": "Roupas", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+manga+curta+carters", 
+     "Busca 2 (Específica)": "https://www.riachuelo.com.br/busca?q=kit%20body%20carter%27s", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Kit-Body-Beb%C3%AA-Manga-Curta/dp/B082T49M3D"},
+    
+    {"Item": "Macacão Bebê Algodão", "Categoria": "Roupas", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+algodao+suedine", 
+     "Busca 2 (Específica)": "https://www.renner.com.br/b/infantil/bebes/macacao-e-macaquinho", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Macac%C3%A3o-Beb%C3%AA-Algod%C3%A3o-Estampado/dp/B08P1QYZM4"},
+    
+    {"Item": "Absorvente Pós-Parto Plenitud", "Categoria": "MamãeBruna", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Absorvente+Pos-Parto+Plenitud", 
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/plenitud-femme-absorvente-pos-parto-8-unidades.html", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Absorvente-P%C3%B3s-Parto-Plenitud-Femme-Unidades/dp/B07Q5W5R5W"},
+    
+    {"Item": "Bomba Tira Leite Elétrica G-Tech Smart", "Categoria": "MamãeBruna", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Bomba+Tira+Leite+Eletrica+G-Tech+Smart", 
+     "Busca 2 (Específica)": "https://www.drogaraia.com.br/bomba-tira-leite-materno-eletrica-g-tech-smart.html", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Bomba-Tira-Leite-El%C3%A9trica-G-Tech/dp/B07L5P4V8W"},
+    
+    {"Item": "Carrinho de Bebê Burigotto", "Categoria": "Passeio", "Comprado": False, 
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Carrinho+de+Bebe+Burigotto", 
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/carrinho-de-bebe-burigotto-ecce-preto/p/231207600/bb/cbb2/", 
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/Carrinho-Beb%C3%AA-Burigotto-Ecce-Preto/dp/B08V5QZXYQ"},
 ]
 
 INITIAL_LOJAS = [
@@ -72,8 +133,8 @@ with tab1:
             "Item": st.column_config.TextColumn("Item", width="medium"),
             "Comprado": st.column_config.CheckboxColumn("Comprado?", default=False),
             "Busca 1 (Google)": st.column_config.LinkColumn("Google Shopping", display_text="Google 🛒"),
-            "Busca 2 (Específica)": st.column_config.LinkColumn("Loja 1", display_text="Loja 🛒"),
-            "Busca 3 (Alternativa)": st.column_config.LinkColumn("Loja 2", display_text="Alternativa 🛒")
+            "Busca 2 (Específica)": st.column_config.LinkColumn("Loja Direta", display_text="Loja 🛒"),
+            "Busca 3 (Alternativa)": st.column_config.LinkColumn("Alternativa", display_text="Alternativa 🛒")
         },
         hide_index=True,
         use_container_width=True
@@ -86,11 +147,10 @@ with tab1:
 
     st.divider()
 
-    st.subheader("➕ Adicionar Novo Item")
+    st.subheader("➕ Adicionar Novo Item (O Robô vai buscar os links)")
     with st.form("add_item_form"):
         new_item = st.text_input("Nome do Item")
         
-        # Categorias existentes + MamãeBruna
         categorias_existentes = list(st.session_state.df['Categoria'].unique())
         if "MamãeBruna" not in categorias_existentes:
             categorias_existentes.append("MamãeBruna")
@@ -108,7 +168,6 @@ with tab1:
                 search_query = new_item.replace(' ', '+')
                 link1 = f"https://www.google.com/search?tbm=shop&q={search_query}"
                 
-                # Regra de Roupas
                 if cat_final == "Roupas":
                     link2 = f"https://www.renner.com.br/b?q={search_query}"
                     link3 = f"https://www.amazon.com.br/s?k={search_query}"
@@ -129,7 +188,7 @@ with tab1:
 
 with tab2:
     st.subheader("Lojas Aliadas (Monitoramento)")
-    st.markdown("Adicione os links das suas lojas favoritas. O nosso robô (e o futuro bot do Telegram) usarão essas lojas como base principal de monitoramento!")
+    st.markdown("Adicione os links das lojas que vocês confiam e gostam de comprar. O bot focará nestas opções.")
     
     edited_lojas = st.data_editor(
         st.session_state.df_lojas,
@@ -146,6 +205,3 @@ with tab2:
         st.session_state.df_lojas = edited_lojas
         st.session_state.df_lojas.to_csv(LOJAS_FILE, index=False)
         st.success("Lista de Lojas atualizada!")
-
-st.divider()
-st.info("💡 **Dica ninja:** Mande uma imagem pro chat para eu colocar como papel de parede deste painel!")
