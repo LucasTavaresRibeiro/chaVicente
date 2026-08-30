@@ -171,7 +171,7 @@ INITIAL_DATA = [
 ]
 
 INITIAL_LOJAS = [
-    {"Loja": "Amazon - Categoria Bebês", "Link": "https://www.amazon.com.br/bebes-e-criancas/b?ie=UTF8&node=16245610011", "Monitorar": True},
+    {"Loja": "Amazon - Categoria Bebês", "Link": "https://www.amazon.com.br/s?i=baby", "Monitorar": True},
     {"Loja": "Drogasil - Infantil", "Link": "https://www.drogasil.com.br/infantil.html", "Monitorar": True},
     {"Loja": "Riachuelo - Carter's", "Link": "https://www.riachuelo.com.br/infantil/bebes/carters", "Monitorar": True}
 ]
