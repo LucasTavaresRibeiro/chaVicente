@@ -535,16 +535,132 @@ INITIAL_DATA = [
      "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/cadeira+alimentacao/",
      "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=cadeira+alimentacao+bebe"},
 
-    # Prioridade Média (2 pontos)
-    {"Item": "Kit Mamadeiras Philips Avent Pétala", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 160,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mamadeiras+avent+petala",
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mamadeira+avent+petala",
-     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=mamadeira+avent"},
+    {"Item": "Mamadeira", "Categoria": "Alimentação", "Qtd": 3, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 130,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mamadeiras+philips+avent+petala",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=mamadeira+avent",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=mamadeira+avent+petala"},
 
-    {"Item": "Escova para Lavar Mamadeira", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=escova+lavar+mamadeira",
+    {"Item": "Escova para mamadeira", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=escova+lavar+mamadeira+e+bico",
      "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=escova+mamadeira",
-     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=escova+mamadeira"}
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=escova+mamadeira"},
+
+    {"Item": "Babador", "Categoria": "Alimentação", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=babador+bebe+silicone+ou+tecido",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=babador+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/babador-bebe"},
+
+    {"Item": "Colher / talheres", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+colher+talheres+silicone+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=colher+silicone+bebe",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=colher+bebe"},
+
+    {"Item": "Prato", "Categoria": "Alimentação", "Qtd": 2, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=prato+termico+ventosa+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=prato+bebe+ventosa",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/prato-bebe"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Bico de mamadeira", "Categoria": "Alimentação", "Qtd": 3, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bico+de+mamadeira+philips+avent",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=bico+mamadeira",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=bico+mamadeira"},
+
+    {"Item": "Esterilizador de mamadeira", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 90,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=esterilizador+de+mamadeira+microondas",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=esterilizador+mamadeira",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/esterilizador-mamadeira"},
+
+    {"Item": "Escorredor de mamadeira", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=escorredor+de+mamadeiras+e+copos",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=escorredor+mamadeira",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/escorredor-mamadeira"},
+
+    {"Item": "Pote para alimentos", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+potes+papinha+congelar+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=pote+papinha+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/pote-papinha-bebe"},
+
+    {"Item": "Copo transição", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=copo+de+transicao+treinamento+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=copo+transicao+bebe",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=copo+transicao"},
+
+    {"Item": "Alimentador", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=alimentador+porta+frutas+bebe+silicone",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=alimentador+silicone+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/alimentador-bebe"},
+
+    {"Item": "Chupeta", "Categoria": "Alimentação", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=chupeta+ortodontica+silicone+bebe",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=chupeta",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=chupeta+bebe"},
+
+    {"Item": "Porta chupeta", "Categoria": "Alimentação", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 20,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=porta+chupeta+esterilizavel",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=porta+chupeta",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=porta+chupeta"},
+
+    {"Item": "Prendedor de chupeta", "Categoria": "Alimentação", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=prendedor+de+chupeta+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=prendedor+chupeta",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=prendedor+chupeta"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Pote para leite materno", "Categoria": "Alimentação", "Qtd": 2, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=potes+armazenamento+leite+materno",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=pote+leite+materno",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=pote+leite+materno"},
+
+    {"Item": "Porta leite em pó", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=dosador+porta+leite+em+po+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=porta+leite+po",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=porta+leite+po"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: SAÚDE
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Aspirador nasal", "Categoria": "Saúde", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=aspirador+nasal+bebe+sugador",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=aspirador+nasal",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=aspirador+nasal+bebe"},
+
+    {"Item": "Termômetro", "Categoria": "Saúde", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=termometro+digital+bebe+infrvermelho+ou+ponta+flexivel",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=termometro+digital",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=termometro+digital+bebe"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Bolsa térmica para cólica", "Categoria": "Saúde", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bolsa+termica+para+colica+bebe+sementes",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=bolsa+termica+colica",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=bolsa+termica+colica+bebe"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: ENTRETENIMENTO
+    # -------------------------------------------------------------------------
+    # Prioridade Média (2 pontos)
+    {"Item": "Mordedor", "Categoria": "Entretenimento", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=mordedor+bebe+gel+silicone",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mordedor+bebe",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=mordedor+bebe"},
+
+    {"Item": "Brinquedos interativos", "Categoria": "Entretenimento", "Qtd": 4, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=brinquedo+educativo+interativo+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=brinquedos+interativos+bebe",
+     "Busca 3 (Alternativa)": "https://www.magazineluiza.com.br/busca/brinquedo+bebe/"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Cadeira de descanso", "Categoria": "Entretenimento", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 280,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=cadeira+de+descanso+bebe+vibratoria",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/cadeira+descanso+bebe/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=cadeira+descanso+bebe"},
+
+    {"Item": "Tapete de atividades", "Categoria": "Entretenimento", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 150,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=tapete+de+atividades+bebe+com+arco",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=tapete+atividades+bebe",
+     "Busca 3 (Alternativa)": "https://www.magazineluiza.com.br/busca/tapete+atividades+bebe/"}
 ]
 
 INITIAL_LOJAS = [
@@ -638,7 +754,7 @@ with tab1:
         column_config={
             "Qtd": st.column_config.NumberColumn("Qtd", min_value=1, step=1, width="small"),
             "Item": st.column_config.TextColumn("Item / Produto", width="medium"),
-            "Categoria": st.column_config.SelectboxColumn("Categoria", options=["Quarto", "Banho", "Higiene", "Roupas", "Passeio", "Para mamãe", "Alimentação"], width="small"),
+            "Categoria": st.column_config.SelectboxColumn("Categoria", options=["Quarto", "Banho", "Higiene", "Roupas", "Passeio", "Para mamãe", "Alimentação", "Saúde", "Entretenimento"], width="small"),
             "Prioridade": st.column_config.SelectboxColumn("Prioridade", options=["⭐⭐⭐ Alta", "⭐⭐ Média", "⭐ Baixa"], width="small"),
             "Quando Comprar": st.column_config.SelectboxColumn("Quando Comprar", options=["Gravidez", "Entre 0 e 3 meses", "Entre 3 e 6 meses", "Entre 6 e 12 meses"], width="medium"),
             "Comprado": st.column_config.CheckboxColumn("Comprado?", default=False, width="small"),
@@ -680,7 +796,7 @@ with tab1:
         col_form3, col_form4, col_form5 = st.columns([2, 2, 2])
         
         categorias_existentes = list(st.session_state.df['Categoria'].unique())
-        for cat_padrao in ["Quarto", "Banho", "Higiene", "Roupas", "Passeio", "Para mamãe", "Alimentação"]:
+        for cat_padrao in ["Quarto", "Banho", "Higiene", "Roupas", "Passeio", "Para mamãe", "Alimentação", "Saúde", "Entretenimento"]:
             if cat_padrao not in categorias_existentes:
                 categorias_existentes.append(cat_padrao)
                 
@@ -706,7 +822,7 @@ with tab1:
                 if cat_final == "Roupas":
                     link2 = f"https://www.renner.com.br/b?q={search_query}"
                     link3 = f"https://www.dafiti.com.br/catalog/?q={search_query}"
-                elif cat_final in ["Higiene", "Banho", "Para mamãe"]:
+                elif cat_final in ["Higiene", "Banho", "Para mamãe", "Saúde"]:
                     link2 = f"https://www.drogasil.com.br/search?w={search_query}"
                     link3 = f"https://www.amazon.com.br/s?k={search_query}"
                 else:
