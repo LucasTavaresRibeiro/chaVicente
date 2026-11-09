@@ -68,7 +68,7 @@ LOJAS_FILE = "lojas.csv"
 SHEIN_FILE = "shein.csv"
 
 # ==============================================================================
-# DADOS INICIAIS DO ENXOVAL ORGANIZADOS POR CATEGORIA E PRIORIDADE
+# DADOS INICIAIS COMPLETOS DO ENXOVAL (TODOS OS PRINTS ORGANIZADOS POR PRIORIDADE)
 # ==============================================================================
 INITIAL_DATA = [
     # -------------------------------------------------------------------------
@@ -305,22 +305,246 @@ INITIAL_DATA = [
      "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=colonia+bebe"},
 
     # -------------------------------------------------------------------------
-    # CATEGORIA: MAMÃE BRUNA
+    # CATEGORIA: ROUPAS (REGRA NUNCA SHOPEE / MERCADO LIVRE)
     # -------------------------------------------------------------------------
-    {"Item": "Bomba Tira Leite Elétrica", "Categoria": "MamãeBruna", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 180,00",
+    # Prioridade Alta (3 pontos)
+    {"Item": "Body RN", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 80,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+rn",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=body+bebe+rn",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=body+bebe+rn"},
+
+    {"Item": "Body P", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 80,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+p",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=body+bebe+p",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=body+bebe+p"},
+
+    {"Item": "Body M", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 75,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+m",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=body+bebe+m",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=body+bebe+m"},
+
+    {"Item": "Body G", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 75,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+bebe+g",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=body+bebe+g",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=body+bebe+g"},
+
+    {"Item": "Macacão RN", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+rn+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=macacao+bebe+rn",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=macacao%20bebe%20rn"},
+
+    {"Item": "Macacão P", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+p+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=macacao+bebe+p",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=macacao%20bebe%20p"},
+
+    {"Item": "Macacão M", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 65,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+m+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=macacao+bebe+m",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=macacao%20bebe%20m"},
+
+    {"Item": "Culote RN", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=culote+mijao+bebe+rn",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=culote+bebe+rn",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=mijao+bebe+rn"},
+
+    {"Item": "Culote P", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=culote+mijao+bebe+p",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=culote+bebe+p",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=mijao+bebe+p"},
+
+    {"Item": "Culote M", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=culote+mijao+bebe+m",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=culote+bebe+m",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=mijao+bebe+m"},
+
+    {"Item": "Meia", "Categoria": "Roupas", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+meia+recem+nascido+bebe",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=meia+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=meia+bebe"},
+
+    {"Item": "Sapatinho bebê", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=sapatinho+bebe+tricot+ou+tecido",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=sapatinho+bebe",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=sapatinho+bebe"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Macacão G", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 65,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+g+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=macacao+bebe+g",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=macacao%20bebe%20g"},
+
+    {"Item": "Culote G", "Categoria": "Roupas", "Qtd": 4, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=culote+mijao+bebe+g",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=culote+bebe+g",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=mijao+bebe+g"},
+
+    {"Item": "Casaquinho P", "Categoria": "Roupas", "Qtd": 3, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=casaquinho+bebe+p+tricot+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=casaquinho+bebe",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=casaquinho+bebe"},
+
+    {"Item": "Casaquinho M", "Categoria": "Roupas", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 55,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=casaquinho+bebe+m+tricot+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=casaquinho+bebe",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=casaquinho+bebe"},
+
+    {"Item": "Casaquinho G", "Categoria": "Roupas", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 55,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=casaquinho+bebe+g+tricot+algodao",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=casaquinho+bebe",
+     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=casaquinho+bebe"},
+
+    {"Item": "Conjunto bebê P", "Categoria": "Roupas", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=conjunto+bebe+p",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=conjunto+bebe",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=conjunto%20bebe"},
+
+    {"Item": "Conjunto bebê M", "Categoria": "Roupas", "Qtd": 3, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 65,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=conjunto+bebe+m",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=conjunto+bebe",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=conjunto%20bebe"},
+
+    {"Item": "Conjunto bebê G", "Categoria": "Roupas", "Qtd": 3, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 70,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=conjunto+bebe+g",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=conjunto+bebe",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=conjunto%20bebe"},
+
+    {"Item": "Conjunto bebê GG", "Categoria": "Roupas", "Qtd": 3, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 70,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=conjunto+bebe+gg",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=conjunto+bebe",
+     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=conjunto%20bebe"},
+
+    {"Item": "Luva", "Categoria": "Roupas", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 15,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=luva+para+bebe+recem+nascido",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=luva+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=luva+bebe"},
+
+    {"Item": "Touca", "Categoria": "Roupas", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 20,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=touca+gorro+bebe+recem+nascido",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=touca+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=touca+bebe"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: PASSEIO
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Cadeirinha para carro / bebê conforto", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 450,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=cadeirinha+para+carro+bebe+conforto",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/bebe+conforto/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=bebe+conforto"},
+
+    {"Item": "Carrinho de bebê", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 850,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=carrinho+de+bebe+travel+system",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/carrinho+de+bebe/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=carrinho+de+bebe"},
+
+    {"Item": "Bolsa / mochila", "Categoria": "Passeio", "Qtd": 2, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 180,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=mochila+maternidade+bebe+termica",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=bolsa+maternidade",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/bolsa-maternidade"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Canguru", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 120,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=canguru+ergonomico+para+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=canguru+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/canguru-bebe"},
+
+    {"Item": "Trocador portátil", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=trocador+portatil+bolsa+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=trocador+portatil+bebe",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=trocador+portatil"},
+
+    {"Item": "Apoio para cabeça", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=apoio+para+cabeca+bebe+conforto",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=apoio+cabeca+bebe+conforto",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/apoio-cabeca-bebe"},
+
+    {"Item": "Protetor solar para vidro do carro", "Categoria": "Passeio", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=protetor+solar+vidro+carro+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=protetor+solar+carro+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/protetor-solar-carro-bebe"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Colchonete / capa para carrinho", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=colchonete+capa+para+carrinho+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=capa+carrinho+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/capa-carrinho-bebe"},
+
+    {"Item": "Capa de chuva para carrinho", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=capa+de+chuva+para+carrinho+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=capa+chuva+carrinho+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/capa-chuva-carrinho-bebe"},
+
+    {"Item": "Espelho retrovisor para carro", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=espelho+retrovisor+carro+bebe+conforto",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=espelho+retrovisor+bebe+carro",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/espelho-retrovisor-bebe-carro"},
+
+    {"Item": "Capa protetora para banco do carro", "Categoria": "Passeio", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=capa+protetora+banco+carro+cadeirinha",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=protetor+banco+carro+cadeirinha",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/protetor-banco-carro-cadeirinha"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: PARA MAMÃE (MAMÃE BRUNA)
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Absorvente para seios", "Categoria": "Para mamãe", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=absorvente+para+seios+amamentacao",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=absorvente+seios",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+seios"},
+
+    {"Item": "Bomba Tira Leite Elétrica", "Categoria": "Para mamãe", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 180,00",
      "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bomba+tira+leite+eletrica",
      "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=bomba+tira+leite+eletrica",
      "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/bomba-tira-leite-eletrica"},
 
-    {"Item": "Pomada de Lanolina (Fissuras Mamilo)", "Categoria": "MamãeBruna", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 60,00",
+    {"Item": "Pomada de Lanolina (Fissuras Mamilo)", "Categoria": "Para mamãe", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 60,00",
      "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=pomada+lanolina+lansinoh",
      "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=lanolina",
      "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lanolina"},
 
-    {"Item": "Absorvente Pós-Parto", "Categoria": "MamãeBruna", "Qtd": 2, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 22,00",
+    {"Item": "Absorvente Pós-Parto", "Categoria": "Para mamãe", "Qtd": 2, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 22,00",
      "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=absorvente+pos-parto",
      "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=absorvente+pos+parto",
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+pos+parto"}
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+pos+parto"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Almofada de amamentação", "Categoria": "Para mamãe", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 90,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=almofada+de+amamentacao",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=almofada+amamentacao",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/almofada-amamentacao"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Tira leite manual", "Categoria": "Para mamãe", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=tira+leite+manual+bebe",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=tira+leite+manual",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=tira+leite+manual"},
+
+    {"Item": "Protetor para seios", "Categoria": "Para mamãe", "Qtd": 2, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=protetor+para+seios+silicone+amamentacao",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=protetor+seios+silicone",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=protetor+seios+silicone"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: ALIMENTAÇÃO
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Cadeira alimentação", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 250,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=cadeira+de+alimentacao+bebe+alta",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/cadeira+alimentacao/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=cadeira+alimentacao+bebe"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Kit Mamadeiras Philips Avent Pétala", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 160,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mamadeiras+avent+petala",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mamadeira+avent+petala",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=mamadeira+avent"},
+
+    {"Item": "Escova para Lavar Mamadeira", "Categoria": "Alimentação", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=escova+lavar+mamadeira",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=escova+mamadeira",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=escova+mamadeira"}
 ]
 
 INITIAL_LOJAS = [
@@ -337,8 +561,8 @@ def load_data(file_path, default_data):
     if os.path.exists(file_path):
         try:
             df = pd.read_csv(file_path)
-            # Se faltar as colunas novas (Qtd ou Prioridade), atualiza com os novos dados
-            if "Prioridade" not in df.columns or "Qtd" not in df.columns:
+            # Se a quantidade de itens for muito diferente da lista completa atualizada, atualiza com a nova lista completa
+            if len(df) < len(default_data) or "Prioridade" not in df.columns or "Qtd" not in df.columns:
                 df = pd.DataFrame(default_data)
                 df.to_csv(file_path, index=False)
             return df
@@ -364,7 +588,7 @@ if 'df_shein' not in st.session_state:
 tab1, tab2, tab3 = st.tabs(["📜 Pergaminho de Itens", "🏬 Lojas Monitoradas", "👗 Shein Kids"])
 
 with tab1:
-    st.subheader("📜 Lista de Enxoval do Vicente")
+    st.subheader("📜 Lista Completa de Enxoval do Vicente")
     
     # Métricas de Resumo
     total_itens = len(st.session_state.df)
@@ -414,7 +638,7 @@ with tab1:
         column_config={
             "Qtd": st.column_config.NumberColumn("Qtd", min_value=1, step=1, width="small"),
             "Item": st.column_config.TextColumn("Item / Produto", width="medium"),
-            "Categoria": st.column_config.SelectboxColumn("Categoria", options=["Quarto", "Banho", "Higiene", "MamãeBruna", "Roupas", "Passeio", "Alimentação"], width="small"),
+            "Categoria": st.column_config.SelectboxColumn("Categoria", options=["Quarto", "Banho", "Higiene", "Roupas", "Passeio", "Para mamãe", "Alimentação"], width="small"),
             "Prioridade": st.column_config.SelectboxColumn("Prioridade", options=["⭐⭐⭐ Alta", "⭐⭐ Média", "⭐ Baixa"], width="small"),
             "Quando Comprar": st.column_config.SelectboxColumn("Quando Comprar", options=["Gravidez", "Entre 0 e 3 meses", "Entre 3 e 6 meses", "Entre 6 e 12 meses"], width="medium"),
             "Comprado": st.column_config.CheckboxColumn("Comprado?", default=False, width="small"),
@@ -456,7 +680,7 @@ with tab1:
         col_form3, col_form4, col_form5 = st.columns([2, 2, 2])
         
         categorias_existentes = list(st.session_state.df['Categoria'].unique())
-        for cat_padrao in ["Quarto", "Banho", "Higiene", "MamãeBruna"]:
+        for cat_padrao in ["Quarto", "Banho", "Higiene", "Roupas", "Passeio", "Para mamãe", "Alimentação"]:
             if cat_padrao not in categorias_existentes:
                 categorias_existentes.append(cat_padrao)
                 
@@ -482,7 +706,7 @@ with tab1:
                 if cat_final == "Roupas":
                     link2 = f"https://www.renner.com.br/b?q={search_query}"
                     link3 = f"https://www.dafiti.com.br/catalog/?q={search_query}"
-                elif cat_final in ["Higiene", "Banho", "MamãeBruna"]:
+                elif cat_final in ["Higiene", "Banho", "Para mamãe"]:
                     link2 = f"https://www.drogasil.com.br/search?w={search_query}"
                     link3 = f"https://www.amazon.com.br/s?k={search_query}"
                 else:
