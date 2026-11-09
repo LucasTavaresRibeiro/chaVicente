@@ -28,10 +28,10 @@ css_bg = f"""
     
     /* Overlay semi-transparente para as letras ficarem visíveis */
     .block-container {{
-        background-color: rgba(18, 18, 18, 0.85); /* Fundo escuro com 85% de opacidade */
+        background-color: rgba(18, 18, 18, 0.88); /* Fundo escuro com 88% de opacidade */
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     }}
 
     h1, h2, h3, h4, h5, h6, p, label, span {{
@@ -65,109 +65,262 @@ st.markdown("Bem-vindos ao painel de controle do enxoval e chá de bebê do **Vi
 
 DATA_FILE = "enxoval.csv"
 LOJAS_FILE = "lojas.csv"
+SHEIN_FILE = "shein.csv"
 
-# Dados Iniciais - Com Links Revisados e Preço Médio
-# Dados Iniciais - Lista Completa de Enxoval e Links Revisados 100%
+# ==============================================================================
+# DADOS INICIAIS DO ENXOVAL ORGANIZADOS POR CATEGORIA E PRIORIDADE
+# ==============================================================================
 INITIAL_DATA = [
-    # --- HIGIENE ---
-    {"Item": "Fralda Pampers Premium Care RN", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 60,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+Pampers+Premium+Care+RN", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=pampers+premium+care+rn", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+pampers+premium+care+rn"},
+    # -------------------------------------------------------------------------
+    # CATEGORIA: QUARTO
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Berço", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 550,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=berco+bebe",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/berco+bebe/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=berco+bebe"},
     
-    {"Item": "Fralda Pampers Premium Care P", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 75,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+Pampers+Premium+Care+P", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=pampers+premium+care+p", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+pampers+premium+care+p"},
-    
-    {"Item": "Lenço Umedecido Huggies (Kit Leve Mais)", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 45,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Lenco+Umedecido+Huggies+Recem+Nascido", 
-     "Busca 2 (Específica)": "https://www.drogaraia.com.br/search?w=lenco+umedecido+huggies", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lenco+umedecido+huggies"},
-     
-    {"Item": "Pomada Antiassaduras Bepantol Baby", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 40,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bepantol+baby+pomada", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=bepantol+baby", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=bepantol+baby"},
-     
-    {"Item": "Sabonete Líquido Granado Bebê", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 25,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=sabonete+liquido+granado+bebe", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=sabonete+granado+bebe", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=sabonete+granado+bebe"},
-     
-    {"Item": "Kit Cortador e Lixa de Unha Bebê", "Categoria": "Higiene", "Comprado": False, "Preço Médio": "R$ 35,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+unha+bebe+tesoura", 
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=kit+unha+bebe", 
-     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/kit-unha-bebe"},
+    {"Item": "Colchão para berço", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 150,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=colchao+para+berco+americano",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/colchao+para+berco/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=colchao+para+berco"},
 
-    # --- ROUPAS ---
-    {"Item": "Body Manga Curta Carter's (Kit)", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 130,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+manga+curta+carters", 
-     "Busca 2 (Específica)": "https://www.riachuelo.com.br/busca?q=kit%20body%20carter%27s", 
-     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=kit+body+carters"},
-    
-    {"Item": "Body Manga Longa Básico", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 70,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+body+manga+longa+bebe", 
-     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=kit+body+manga+longa", 
-     "Busca 3 (Alternativa)": "https://www.cea.com.br/busca?q=body%20manga%20longa%20bebe"},
-    
-    {"Item": "Macacão Suedine (Zíper ou Botão)", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 60,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=macacao+bebe+suedine+ziper", 
-     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=macacao+bebe", 
-     "Busca 3 (Alternativa)": "https://www.dafiti.com.br/catalog/?q=macacao+bebe"},
-     
-    {"Item": "Kit Mijão/Culote", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 50,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mijao+bebe+culote", 
-     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=mijao+bebe", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=kit+mijao+bebe"},
-     
-    {"Item": "Kit Meias para Recém-Nascido", "Categoria": "Roupas", "Comprado": False, "Preço Médio": "R$ 30,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+meia+recem+nascido", 
-     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=meia+bebe", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=meia+bebe"},
+    {"Item": "Lençol para berço", "Categoria": "Quarto", "Qtd": 4, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=lencol+para+berco+elastico",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=lencol+berco+elastico",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/lencol-berco"},
 
-    # --- PASSEIO / QUARTO ---
-    {"Item": "Carrinho de Bebê c/ Bebê Conforto", "Categoria": "Passeio", "Comprado": False, "Preço Médio": "R$ 900,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=carrinho+de+bebe+com+bebe+conforto", 
-     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/carrinho+bebe+conforto/", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=carrinho+de+bebe+travel+system"},
-     
-    {"Item": "Babá Eletrônica com Câmera", "Categoria": "Quarto", "Comprado": False, "Preço Médio": "R$ 300,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=baba+eletronica+com+camera", 
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=baba+eletronica+camera", 
-     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/baba-eletronica-camera"},
-     
-    {"Item": "Kit Berço (Lençol e Fronha)", "Categoria": "Quarto", "Comprado": False, "Preço Médio": "R$ 150,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+berco+algodao", 
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=kit+berco", 
+    {"Item": "Manta", "Categoria": "Quarto", "Qtd": 3, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=manta+bebe+microfibra",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=manta+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=manta+bebe"},
+
+    {"Item": "Fralda de boca", "Categoria": "Quarto", "Qtd": 10, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=fralda+de+boca+bebe+pano",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=fralda+de+boca+bebe",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=fralda+de+boca"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Cômoda infantil", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 350,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=comoda+infantil+bebe",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/comoda+infantil/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=comoda+infantil"},
+
+    {"Item": "Poltrona amamentação", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 600,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=poltrona+amamentacao",
+     "Busca 2 (Específica)": "https://www.magazineluiza.com.br/busca/poltrona+amamentacao/",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=poltrona+amamentacao"},
+
+    {"Item": "Kit de berço", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 150,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+de+berco+algodao",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=kit+de+berco",
      "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/kit-berco"},
 
-    # --- ALIMENTAÇÃO ---
-    {"Item": "Kit Mamadeiras Philips Avent Pétala", "Categoria": "Alimentação", "Comprado": False, "Preço Médio": "R$ 160,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+mamadeiras+avent+petala", 
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mamadeira+avent+petala", 
-     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=mamadeira+avent"},
-     
-    {"Item": "Escova para Lavar Mamadeira", "Categoria": "Alimentação", "Comprado": False, "Preço Médio": "R$ 25,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=escova+lavar+mamadeira", 
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=escova+mamadeira", 
-     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=escova+mamadeira"},
+    {"Item": "Babá eletrônica", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 300,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=baba+eletronica+com+camera",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=baba+eletronica+camera",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/baba-eletronica-camera"},
 
-    # --- MAMÃE BRUNA ---
-    {"Item": "Absorvente Pós-Parto", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 22,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=absorvente+pos-parto", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=absorvente+pos+parto", 
-     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+pos+parto"},
-    
-    {"Item": "Bomba Tira Leite Elétrica", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 180,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bomba+tira+leite+eletrica", 
-     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=bomba+tira+leite+eletrica", 
+    {"Item": "Trocador", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 70,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=trocador+bebe+comoda",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=trocador+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/trocador-bebe"},
+
+    {"Item": "Protetor de colchão", "Categoria": "Quarto", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=protetor+colchao+berco+impermeavel",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=protetor+colchao+berco+impermeavel",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/protetor-colchao-berco"},
+
+    {"Item": "Cobertor / edredom", "Categoria": "Quarto", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=cobertor+edredom+bebe",
+     "Busca 2 (Específica)": "https://www.renner.com.br/b?q=cobertor+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=cobertor+bebe"},
+
+    {"Item": "Cueiro", "Categoria": "Quarto", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=cueiro+flanelado+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=cueiro+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/cueiro-bebe"},
+
+    {"Item": "Mosquiteiro para berço", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=mosquiteiro+para+berco",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mosquiteiro+berco",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/mosquiteiro-berco"},
+
+    {"Item": "Posicionador para dormir", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 55,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=posicionador+para+dormir+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=posicionador+bebe+dormir",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/posicionador-bebe"},
+
+    {"Item": "Cabide infantil", "Categoria": "Quarto", "Qtd": 20, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=kit+cabide+infantil+veludo",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=kit+cabide+infantil",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/cabide-infantil"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Travesseiro", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=travesseiro+antissufocante+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=travesseiro+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/travesseiro-bebe"},
+
+    {"Item": "Fronha avulsa", "Categoria": "Quarto", "Qtd": 3, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 20,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=fronha+avulsa+berco+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=fronha+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/fronha-bebe"},
+
+    {"Item": "Naninha", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=naninha+bebe+pelucia",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=naninha+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/naninha-bebe"},
+
+    {"Item": "Ninho", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 120,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=ninho+redutor+de+berco",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=ninho+redutor+berco",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/ninho-redutor-berco"},
+
+    {"Item": "Móbile para berço", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 80,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=mobile+para+berco+musical",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=mobile+berco",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/mobile-berco"},
+
+    {"Item": "Livro diário do bebê", "Categoria": "Quarto", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=livro+diario+do+bebe+recordacoes",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=livro+diario+do+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/livro-diario-do-bebe"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: BANHO
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Banheira", "Categoria": "Banho", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 160,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=banheira+bebe+com+suporte",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=banheira+bebe+suporte",
+     "Busca 3 (Alternativa)": "https://www.magazineluiza.com.br/busca/banheira+bebe/"},
+
+    {"Item": "Toalha", "Categoria": "Banho", "Qtd": 3, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 50,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=toalha+de+banho+bebe+com+capuz",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=toalha+capuz+bebe",
+     "Busca 3 (Alternativa)": "https://www.renner.com.br/b?q=toalha+bebe"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Termômetro para banho", "Categoria": "Banho", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=termometro+para+banho+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=termometro+banho+bebe",
+     "Busca 3 (Alternativa)": "https://www.drogasil.com.br/search?w=termometro+banho"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Almofada para banho", "Categoria": "Banho", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 70,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=almofada+para+banho+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=almofada+banho+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/almofada-banho-bebe"},
+
+    {"Item": "Caneca para banho", "Categoria": "Banho", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=caneca+chuveiro+banho+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=caneca+banho+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/caneca-banho-bebe"},
+
+    {"Item": "Brinquedos para banho", "Categoria": "Banho", "Qtd": 3, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=brinquedos+para+banho+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=brinquedos+banho+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/brinquedos-banho-bebe"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: HIGIENE
+    # -------------------------------------------------------------------------
+    # Prioridade Alta (3 pontos)
+    {"Item": "Fralda descartável tamanho RN", "Categoria": "Higiene", "Qtd": 2, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+descartavel+tamanho+RN",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=fralda+rn",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+rn"},
+
+    {"Item": "Fralda descartável tamanho P", "Categoria": "Higiene", "Qtd": 15, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 75,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+descartavel+tamanho+P",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=fralda+tamanho+p",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+tamanho+p"},
+
+    {"Item": "Fralda descartável tamanho M", "Categoria": "Higiene", "Qtd": 30, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 85,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+descartavel+tamanho+M",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=fralda+tamanho+m",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+tamanho+m"},
+
+    {"Item": "Fralda descartável tamanho G", "Categoria": "Higiene", "Qtd": 25, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Entre 6 e 12 meses", "Comprado": False, "Preço Médio": "R$ 90,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=Fralda+descartavel+tamanho+G",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=fralda+tamanho+g",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=fralda+tamanho+g"},
+
+    {"Item": "Lenço umedecido", "Categoria": "Higiene", "Qtd": 12, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 45,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=lenco+umedecido+bebe+recem+nascido",
+     "Busca 2 (Específica)": "https://www.drogaraia.com.br/search?w=lenco+umedecido",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lenco+umedecido+bebe"},
+
+    {"Item": "Creme para assadura", "Categoria": "Higiene", "Qtd": 3, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 40,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=creme+para+assadura+bebe+bepantol",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=creme+assadura+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=creme+assadura+bebe"},
+
+    {"Item": "Algodão", "Categoria": "Higiene", "Qtd": 6, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 15,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=algodao+em+disco+ou+quadrado+bebe",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=algodao+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=algodao+bebe"},
+
+    {"Item": "Shampoo", "Categoria": "Higiene", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 22,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=shampoo+bebe+recem+nascido",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=shampoo+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=shampoo+bebe"},
+
+    {"Item": "Sabonete", "Categoria": "Higiene", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=sabonete+liquido+bebe+glicerina",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=sabonete+liquido+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=sabonete+liquido+bebe"},
+
+    {"Item": "Hastes flexíveis (cotonetes)", "Categoria": "Higiene", "Qtd": 3, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 12,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=hastes+flexiveis+cotonetes+bebe",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=hastes+flexiveis+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=cotonete+bebe"},
+
+    {"Item": "Pente / escova de cabelo", "Categoria": "Higiene", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 25,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=pente+escova+de+cabelo+bebe",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=escova+cabelo+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=kit+escova+pente+bebe"},
+
+    # Prioridade Média (2 pontos)
+    {"Item": "Fralda de tecido", "Categoria": "Higiene", "Qtd": 2, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 35,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=fralda+de+tecido+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=fralda+tecido+bebe",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/fralda-tecido-bebe"},
+
+    {"Item": "Creme hidratante", "Categoria": "Higiene", "Qtd": 1, "Prioridade": "⭐⭐ Média", "Quando Comprar": "Entre 0 e 3 meses", "Comprado": False, "Preço Médio": "R$ 38,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=creme+hidratante+bebe+recem+nascido",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=hidratante+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=hidratante+bebe"},
+
+    # Prioridade Baixa (1 ponto)
+    {"Item": "Lixeira anti odor", "Categoria": "Higiene", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 140,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=lixeira+anti+odor+fraldas+bebe",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=lixeira+anti+odor+fraldas",
+     "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/lixeira-anti-odor-fraldas"},
+
+    {"Item": "Perfume (colônia)", "Categoria": "Higiene", "Qtd": 1, "Prioridade": "⭐ Baixa", "Quando Comprar": "Entre 3 e 6 meses", "Comprado": False, "Preço Médio": "R$ 30,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=perfume+colonia+bebe+sem+alcool",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=colonia+bebe",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=colonia+bebe"},
+
+    # -------------------------------------------------------------------------
+    # CATEGORIA: MAMÃE BRUNA
+    # -------------------------------------------------------------------------
+    {"Item": "Bomba Tira Leite Elétrica", "Categoria": "MamãeBruna", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 180,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=bomba+tira+leite+eletrica",
+     "Busca 2 (Específica)": "https://www.amazon.com.br/s?k=bomba+tira+leite+eletrica",
      "Busca 3 (Alternativa)": "https://lista.mercadolivre.com.br/bomba-tira-leite-eletrica"},
-     
-    {"Item": "Pomada de Lanolina (Fissuras Mamilo)", "Categoria": "MamãeBruna", "Comprado": False, "Preço Médio": "R$ 60,00",
-     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=pomada+lanolina+lansinoh", 
-     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=lanolina", 
+
+    {"Item": "Pomada de Lanolina (Fissuras Mamilo)", "Categoria": "MamãeBruna", "Qtd": 1, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 60,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=pomada+lanolina+lansinoh",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=lanolina",
      "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=lanolina"},
+
+    {"Item": "Absorvente Pós-Parto", "Categoria": "MamãeBruna", "Qtd": 2, "Prioridade": "⭐⭐⭐ Alta", "Quando Comprar": "Gravidez", "Comprado": False, "Preço Médio": "R$ 22,00",
+     "Busca 1 (Google)": "https://www.google.com/search?tbm=shop&q=absorvente+pos-parto",
+     "Busca 2 (Específica)": "https://www.drogasil.com.br/search?w=absorvente+pos+parto",
+     "Busca 3 (Alternativa)": "https://www.amazon.com.br/s?k=absorvente+pos+parto"}
 ]
 
 INITIAL_LOJAS = [
@@ -176,14 +329,23 @@ INITIAL_LOJAS = [
     {"Loja": "Riachuelo - Carter's", "Link": "https://www.riachuelo.com.br/infantil/bebes/carters", "Monitorar": True}
 ]
 
-SHEIN_FILE = "shein.csv"
 INITIAL_SHEIN = [
     {"Look": "Conjunto Moletom Infantil", "Preço Estimado": "R$ 45,00", "Link Shein": "https://br.shein.com/Kids-Clothing-c-2053.html", "Comprado": False}
 ]
 
 def load_data(file_path, default_data):
     if os.path.exists(file_path):
-        return pd.read_csv(file_path)
+        try:
+            df = pd.read_csv(file_path)
+            # Se faltar as colunas novas (Qtd ou Prioridade), atualiza com os novos dados
+            if "Prioridade" not in df.columns or "Qtd" not in df.columns:
+                df = pd.DataFrame(default_data)
+                df.to_csv(file_path, index=False)
+            return df
+        except Exception:
+            df = pd.DataFrame(default_data)
+            df.to_csv(file_path, index=False)
+            return df
     else:
         df = pd.DataFrame(default_data)
         df.to_csv(file_path, index=False)
@@ -198,49 +360,120 @@ if 'df_lojas' not in st.session_state:
 if 'df_shein' not in st.session_state:
     st.session_state.df_shein = load_data(SHEIN_FILE, INITIAL_SHEIN)
 
+# Navegação por Abas
 tab1, tab2, tab3 = st.tabs(["📜 Pergaminho de Itens", "🏬 Lojas Monitoradas", "👗 Shein Kids"])
 
 with tab1:
-    st.subheader("Lista de Enxoval")
+    st.subheader("📜 Lista de Enxoval do Vicente")
     
+    # Métricas de Resumo
+    total_itens = len(st.session_state.df)
+    itens_comprados = int(st.session_state.df["Comprado"].sum()) if "Comprado" in st.session_state.df else 0
+    itens_pendentes = total_itens - itens_comprados
+    
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("📦 Total de Itens", total_itens)
+    m2.metric("✅ Já Comprados", itens_comprados)
+    m3.metric("⏳ Missão Pendente", itens_pendentes)
+    progresso = (itens_comprados / total_itens) if total_itens > 0 else 0.0
+    m4.metric("🎯 Progresso do Enxoval", f"{int(progresso * 100)}%")
+    
+    st.progress(progresso)
+    st.divider()
+
+    # Filtros por Categoria e Prioridade
+    f1, f2, f3 = st.columns([2, 2, 2])
+    with f1:
+        categorias_disponiveis = ["Todas"] + list(st.session_state.df['Categoria'].unique())
+        cat_filtro = st.selectbox("📂 Filtrar por Categoria:", categorias_disponiveis)
+    with f2:
+        prioridades_disponiveis = ["Todas", "⭐⭐⭐ Alta", "⭐⭐ Média", "⭐ Baixa"]
+        prio_filtro = st.selectbox("⭐ Filtrar por Prioridade:", prioridades_disponiveis)
+    with f3:
+        status_filtro = st.selectbox("📌 Status da Compra:", ["Todos", "Apenas Pendentes", "Apenas Comprados"])
+
+    # Aplicando filtros
+    df_filtrado = st.session_state.df.copy()
+    if cat_filtro != "Todas":
+        df_filtrado = df_filtrado[df_filtrado['Categoria'] == cat_filtro]
+    if prio_filtro != "Todas":
+        df_filtrado = df_filtrado[df_filtrado['Prioridade'] == prio_filtro]
+    if status_filtro == "Apenas Pendentes":
+        df_filtrado = df_filtrado[df_filtrado['Comprado'] == False]
+    elif status_filtro == "Apenas Comprados":
+        df_filtrado = df_filtrado[df_filtrado['Comprado'] == True]
+
+    # Ordenação por Prioridade (Alta > Média > Baixa)
+    ordem_prio = {"⭐⭐⭐ Alta": 1, "⭐⭐ Média": 2, "⭐ Baixa": 3}
+    df_filtrado['ordem'] = df_filtrado['Prioridade'].map(ordem_prio).fillna(99)
+    df_filtrado = df_filtrado.sort_values(by=['Categoria', 'ordem']).drop(columns=['ordem'])
+
+    # Editor de Dados
     edited_df = st.data_editor(
-        st.session_state.df,
+        df_filtrado,
         column_config={
-            "Item": st.column_config.TextColumn("Item", width="medium"),
-            "Comprado": st.column_config.CheckboxColumn("Comprado?", default=False),
-            "Preço Médio": st.column_config.TextColumn("Preço Médio", help="Preço base pesquisado pelo robô"),
+            "Qtd": st.column_config.NumberColumn("Qtd", min_value=1, step=1, width="small"),
+            "Item": st.column_config.TextColumn("Item / Produto", width="medium"),
+            "Categoria": st.column_config.SelectboxColumn("Categoria", options=["Quarto", "Banho", "Higiene", "MamãeBruna", "Roupas", "Passeio", "Alimentação"], width="small"),
+            "Prioridade": st.column_config.SelectboxColumn("Prioridade", options=["⭐⭐⭐ Alta", "⭐⭐ Média", "⭐ Baixa"], width="small"),
+            "Quando Comprar": st.column_config.SelectboxColumn("Quando Comprar", options=["Gravidez", "Entre 0 e 3 meses", "Entre 3 e 6 meses", "Entre 6 e 12 meses"], width="medium"),
+            "Comprado": st.column_config.CheckboxColumn("Comprado?", default=False, width="small"),
+            "Preço Médio": st.column_config.TextColumn("Preço Médio", help="Estimativa base calculada"),
             "Busca 1 (Google)": st.column_config.LinkColumn("Google Shopping", display_text="Google 🛒"),
             "Busca 2 (Específica)": st.column_config.LinkColumn("Loja Direta", display_text="Loja 🛒"),
             "Busca 3 (Alternativa)": st.column_config.LinkColumn("Alternativa", display_text="Alternativa 🛒")
         },
         hide_index=True,
-        use_container_width=True
+        use_container_width=True,
+        key="data_editor_enxoval"
     )
 
-    if st.button("Salvar Alterações no Pergaminho 💾"):
-        st.session_state.df = edited_df
-        st.session_state.df.to_csv(DATA_FILE, index=False)
-        st.success("Alterações salvas com sucesso!")
+    col_btn1, col_btn2 = st.columns([2, 4])
+    with col_btn1:
+        if st.button("Salvar Alterações no Pergaminho 💾", use_container_width=True):
+            # Atualiza o dataframe global mantendo linhas filtradas
+            st.session_state.df.update(edited_df)
+            st.session_state.df.to_csv(DATA_FILE, index=False)
+            st.success("Pergaminho Ninja atualizado com sucesso! 🍥")
+            st.rerun()
+    with col_btn2:
+        if st.button("🔄 Restaurar Lista Oficial Completa dos Prints", help="Restaura a lista com todos os itens, quantidades e prioridades dos prints"):
+            st.session_state.df = pd.DataFrame(INITIAL_DATA)
+            st.session_state.df.to_csv(DATA_FILE, index=False)
+            st.success("Lista oficial restaurada com sucesso!")
+            st.rerun()
 
     st.divider()
 
-    st.subheader("➕ Adicionar Novo Item (O Robô vai buscar os links)")
+    st.subheader("➕ Adicionar Novo Item à Missão")
     with st.form("add_item_form"):
-        new_item = st.text_input("Nome do Item")
-        preco_medio_manual = st.text_input("Preço Médio (Ex: R$ 50,00)", value="R$ ")
+        col_form1, col_form2 = st.columns([3, 1])
+        with col_form1:
+            new_item = st.text_input("Nome do Item / Produto")
+        with col_form2:
+            new_qtd = st.number_input("Quantidade", min_value=1, value=1, step=1)
+
+        col_form3, col_form4, col_form5 = st.columns([2, 2, 2])
         
         categorias_existentes = list(st.session_state.df['Categoria'].unique())
-        if "MamãeBruna" not in categorias_existentes:
-            categorias_existentes.append("MamãeBruna")
+        for cat_padrao in ["Quarto", "Banho", "Higiene", "MamãeBruna"]:
+            if cat_padrao not in categorias_existentes:
+                categorias_existentes.append(cat_padrao)
+                
+        with col_form3:
+            cat_opcao = st.selectbox("Categoria", categorias_existentes + ["-- Criar Nova Categoria --"])
+            nova_categoria_manual = st.text_input("Se escolheu criar nova, digite o nome:")
+        with col_form4:
+            new_prio = st.selectbox("Prioridade", ["⭐⭐⭐ Alta", "⭐⭐ Média", "⭐ Baixa"])
+        with col_form5:
+            new_quando = st.selectbox("Quando Comprar", ["Gravidez", "Entre 0 e 3 meses", "Entre 3 e 6 meses", "Entre 6 e 12 meses"])
             
-        cat_opcao = st.selectbox("Categoria", categorias_existentes + ["-- Criar Nova Categoria --"])
-        nova_categoria_manual = st.text_input("Se escolheu criar nova, digite o nome da categoria:")
-        
-        submit_button = st.form_submit_button("Adicionar à Missão")
+        preco_medio_manual = st.text_input("Preço Médio Estimado (Ex: R$ 50,00)", value="R$ ")
+        submit_button = st.form_submit_button("Adicionar à Missão Ninja 🥷")
 
         if submit_button and new_item:
-            cat_final = nova_categoria_manual if cat_opcao == "-- Criar Nova Categoria --" and nova_categoria_manual else cat_opcao
-            if cat_opcao == "-- Criar Nova Categoria --" and not nova_categoria_manual:
+            cat_final = nova_categoria_manual.strip() if cat_opcao == "-- Criar Nova Categoria --" and nova_categoria_manual.strip() else cat_opcao
+            if cat_opcao == "-- Criar Nova Categoria --" and not nova_categoria_manual.strip():
                 st.error("Por favor, digite o nome da nova categoria.")
             else:
                 search_query = new_item.replace(' ', '+')
@@ -249,23 +482,33 @@ with tab1:
                 if cat_final == "Roupas":
                     link2 = f"https://www.renner.com.br/b?q={search_query}"
                     link3 = f"https://www.dafiti.com.br/catalog/?q={search_query}"
-                elif cat_final == "Higiene" or cat_final == "MamãeBruna":
+                elif cat_final in ["Higiene", "Banho", "MamãeBruna"]:
                     link2 = f"https://www.drogasil.com.br/search?w={search_query}"
-                    link3 = f"https://lista.mercadolivre.com.br/{search_query}"
+                    link3 = f"https://www.amazon.com.br/s?k={search_query}"
                 else:
                     link2 = f"https://www.amazon.com.br/s?k={search_query}"
                     link3 = f"https://www.magazineluiza.com.br/busca/{search_query}/"
                 
-                new_row = {"Item": new_item, "Categoria": cat_final, "Comprado": False, "Preço Médio": preco_medio_manual,
-                           "Busca 1 (Google)": link1, "Busca 2 (Específica)": link2, "Busca 3 (Alternativa)": link3}
+                new_row = {
+                    "Item": new_item, 
+                    "Categoria": cat_final, 
+                    "Qtd": int(new_qtd),
+                    "Prioridade": new_prio,
+                    "Quando Comprar": new_quando,
+                    "Comprado": False, 
+                    "Preço Médio": preco_medio_manual,
+                    "Busca 1 (Google)": link1, 
+                    "Busca 2 (Específica)": link2, 
+                    "Busca 3 (Alternativa)": link3
+                }
                 
                 st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame([new_row])], ignore_index=True)
                 st.session_state.df.to_csv(DATA_FILE, index=False)
-                st.success(f"'{new_item}' adicionado!")
+                st.success(f"'{new_item}' adicionado com sucesso ao Pergaminho!")
                 st.rerun()
 
 with tab2:
-    st.subheader("Lojas Aliadas (Monitoramento)")
+    st.subheader("🏬 Lojas Aliadas (Monitoramento)")
     st.markdown("Adicione os links das lojas que vocês confiam e gostam de comprar. O bot focará nestas opções.")
     
     edited_lojas = st.data_editor(
